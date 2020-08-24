@@ -51,40 +51,19 @@ def main():
 
 
 	def displayGraph(inputFile,scale,visualScale):
-
+		import random
 
 		screen=pygame.display.set_mode((800,600))
 		pygame.display.set_caption("Graph Analyser")
-
-		file=open("MP1Try1Luis","r")
-		xPosArray1=file.read().split("$")
-		file.close()
-
-		file=open("MP1Try2Lars","r")
-		xPosArray2=file.read().split("$")
-		file.close()
-
-		file=open("MP1Try3Luis","r")
-		xPosArray3=file.read().split("$")
-		file.close()
-
-		file=open("MP2Try1Lars","r")
-		xPosArray4=file.read().split("$")
-		file.close()
-
-
-
-
-
-		for i in range(len(xPosArray1)-1):
-			drawPoint(float(xPosArray1[i]),i,scale,visualScale,screen,(255,0,0),2,800,600)
-		for i in range(len(xPosArray2)-1):
-			drawPoint(float(xPosArray2[i]),i,scale,visualScale,screen,(0,200,0),2,800,600)
-		for i in range(len(xPosArray3)-1):
-			drawPoint(float(xPosArray3[i]),i,scale,visualScale,screen,(0,0,200),2,800,600)
-		for i in range(len(xPosArray4)-1):
-			drawPoint(float(xPosArray4[i]),i,scale,visualScale,screen,(205,200,200),2,800,600)
 		
+		iterations=4
+		for i in range(1,iterations+1):
+			rgb=(random.randint(0,255),random.randint(0,255),random.randint(0,255))
+			file=open(str(i),"r")
+			data=file.read().split("$")
+			for i in range(len(data)-1):
+				drawPoint(float(data[i]),i,scale,visualScale,screen,rgb,4,800,600)
+			file.close()
 
 		
 		pygame.display.flip()
@@ -104,7 +83,7 @@ def main():
 
 	#getAndCleanInput()
 	#monitoreFile("MP1Try3Luis")
-	displayGraph("MP1Try3Luis",5,5)
+	displayGraph("",5,5)
 if __name__=="__main__":
 	main()
 	
